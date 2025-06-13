@@ -1,15 +1,26 @@
 import time
 import threading
-
+import file_utils as file_utils
 from gpiozero import OutputDevice, DigitalInputDevice
 from datetime import datetime
 
 # Constants
-DURATION = 5  # seconds
-PULSES_PER_LITER = 100  # Replace per meter if needed
+DURATION = 3  # seconds
+PULSES_PER_LITER = 537  # Replace per meter if needed
 
-FLOW_PINS = [25, 24]  # Replace with actual GPIOs
-RELAY_PINS = [26,19,13,6]   # Replace with actual GPIOs
+"""
+PUMP1   = 13
+SOL1    = 26
+FLOW1   = 24
+PULSE   = 536 
+
+PUMP2   = 17
+SOL2    =  19
+FLOW2   = 25
+PULSE   = 537
+"""
+FLOW_PINS = [24,25]  # Replace with actual GPIOs
+RELAY_PINS = [13,26,17,19]   # Replace with actual GPIOs
 
 class FlowMeter:
     def __init__(self, pin, pulses_per_liter=100, name="PUMP"):
@@ -53,33 +64,38 @@ flow_meters = [FlowMeter(pin, PULSES_PER_LITER, name=f"PUMP_{i+1}") for i, pin i
 relays = [OutputDevice(pin, active_high=False) for pin in RELAY_PINS]
 
 try:
-    while True:
-        print("Starting pump cycle...\n")
-        # Turn on all pumps
-        for relay in relays:
-            relay.on()
+    if file_utils.run_file_checks():
+        while True:
+            print("Starting pump cycle...\n")
+            # Turn on all pumps
+            for relay in relays:
+                relay.on()
 
-        threads = []
-        results = [None] * len(flow_meters)
+            threads = []
+            results = [None] * len(flow_meters)
 
-        # Start monitoring in parallel
-        for i, meter in enumerate(flow_meters):
-            t = threading.Thread(target=monitor_flow_thread, args=(meter, DURATION, results, i))
-            threads.append(t)
-            t.start()
+            # Start monitoring in parallel
+            for i, meter in enumerate(flow_meters):
+                t = threading.Thread(target=monitor_flow_thread, args=(meter, DURATION, results, i))
+                threads.append(t)
+                t.start()
 
-        for t in threads:
-            t.join()
+            for t in threads:
+                t.join()
 
-        # Turn off all pumps
-        for relay in relays:
-            relay.off()
+            # Turn off all pumps
+            for relay in relays:
+                relay.off()
 
-        # Print results
-        for result in results:
-            print(result)
+            # Print results
+            for result in results:
+                result["start"] = result["start"].isoformat()
+                result["end"] = result["end"].isoformat()
+                file_utils.append_to_file(result)
 
-        time.sleep(5)  # Wait before next cycle
+                print(result)
+
+            time.sleep(5)  # Wait before next cycle
 
 except KeyboardInterrupt:
     print("Exiting...")

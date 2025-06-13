@@ -5,7 +5,7 @@ from gpiozero import OutputDevice, DigitalInputDevice
 from datetime import datetime
 
 # Constants
-DURATION = 3  # seconds
+DURATION = 15  # seconds
 PULSES_PER_LITER = 537  # Replace per meter if needed
 
 """
@@ -13,12 +13,19 @@ PUMP1   = 13
 SOL1    = 26
 FLOW1   = 24
 PULSE   = 536 
+"""
+#FLOW_PINS = [24]  # Replace with actual GPIOs
+#RELAY_PINS = [13,26]   # Replace with actual GPIOs
 
+"""
 PUMP2   = 17
 SOL2    =  19
 FLOW2   = 25
 PULSE   = 537
 """
+#FLOW_PINS = [25]  # Replace with actual GPIOs
+#RELAY_PINS = [17,19]   # Replace with actual GPIOs
+
 FLOW_PINS = [24,25]  # Replace with actual GPIOs
 RELAY_PINS = [13,26,17,19]   # Replace with actual GPIOs
 

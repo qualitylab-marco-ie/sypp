@@ -51,7 +51,7 @@ RELAY_PINS = [13, 26, 17, 19]
 | Component | GPIO | Direction | Description                   |
 | --------- | ---- | --------- | ----------------------------- |
 | **PUMP 1** | 13   | Output    | Relay for Pump 1     |
-| **SOLENOID ENOID 1**  | 26   | Output    | Relay for SOLENOID enoid 1 |
+| **SOLENOID 1**  | 26   | Output    | Relay for SOLENOID enoid 1 |
 | **PUMP 2** | 17   | Output    | Relay for Pump 2     |
 | **SOLENOID 2**  | 19   | Output    | Relay for SOLENOID enoid 2 |
 | **PUMP 3** | 5    | Output    | Relay for Pump 3        |

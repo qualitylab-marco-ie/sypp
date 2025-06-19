@@ -1,6 +1,6 @@
 # Raspberry Pi Flow Meter Monitoring System
 
-This project is a Python-based flow monitoring and control system using a Raspberry Pi. It controls multiple pumps and solenoid valves via relays and measures liquid flow using flow sensors. It logs volume, flow rate, and pulse data for each cycle.
+This project is a Python-based flow monitoring and control system using a Raspberry Pi. It controls multiple pumps and SOLENOID enoid valves via relays and measures liquid flow using flow sensors. It logs volume, flow rate, and pulse data for each cycle.
 
 ## Features
 
@@ -18,7 +18,7 @@ This project is a Python-based flow monitoring and control system using a Raspbe
 - Raspberry Pi (any model with GPIO support)
 - Flow sensors
 - Relay module (active-low)
-- Pumps or solenoid valves
+- Pumps or SOLENOID enoid valves
 - External power supply for pumps/valves
 - Pull-up resistors (if not using internal pull-up)
 
@@ -30,12 +30,12 @@ Example configuration:
 ```
 
 PUMP1  = GPIO 13
-SOL1   = GPIO 26
+SOLENOID 1   = GPIO 26
 FLOW1  = GPIO 24
 ````
 ````
 PUMP2  = GPIO 17
-SOL2   = GPIO 19
+SOLENOID 2   = GPIO 19
 FLOW2  = GPIO 25
 
 ````
@@ -44,6 +44,33 @@ FLOW2  = GPIO 25
 FLOW_PINS = [24, 25]
 RELAY_PINS = [13, 26, 17, 19]
 ````
+---
+
+## Final Pin Assignment Table
+
+| Component | GPIO | Direction | Description                   |
+| --------- | ---- | --------- | ----------------------------- |
+| **PUMP 1** | 13   | Output    | Relay for Pump 1     |
+| **SOLENOID ENOID 1**  | 26   | Output    | Relay for SOLENOID enoid 1 |
+| **PUMP 2** | 17   | Output    | Relay for Pump 2     |
+| **SOLENOID 2**  | 19   | Output    | Relay for SOLENOID enoid 2 |
+| **PUMP 3** | 5    | Output    | Relay for Pump 3        |
+| **SOLENOID 3**  | 6    | Output    | Relay for SOLENOID enoid 3    |
+| **PUMP 4** | 16   | Output    | Relay for Pump 4        |
+| **SOLENOID 4**  | 20   | Output    | Relay for SOLENOID enoid 4    |
+| **FLOW METER 1** | 24   | Input     | Flow sensor 1        |
+| **FLOW METER 2** | 25   | Input     | Flow sensor 2        |
+| **FLOW METER 3** | 12   | Input     | Flow sensor 3           |
+| **FLOW METER 4** | 21   | Input     | Flow sensor 4           |
+
+---
+
+### Notes
+
+* All selected pins are standard GPIOs with **no critical system functions**.
+* Avoid pins used for I²C (GPIO 2, 3), UART (GPIO 14, 15), and SPI (GPIO 10, 9, 11).
+* All relays are assumed to be **active-low** and controlled using `gpiozero.OutputDevice`.
+* All flow meters use **digital pulse signals** and are read using `gpiozero.DigitalInputDevice`.
 
 ## Installation
 
@@ -146,7 +173,7 @@ http://192.168.1.42:8000/
 ## Safety Notes
 
 * Ensure the pumps and relays are powered correctly and safely.
-* Use opto-isolated relay boards to protect your Raspberry Pi GPIOs.
+* Use opto-iSOLENOID ated relay boards to protect your Raspberry Pi GPIOs.
 * If controlling high-power devices, follow proper electrical safety practices.
 
 ---

@@ -23,10 +23,10 @@ PULSE   = 537
 """
 
 # GPIO pins for flow sensors
-FLOW_PINS = [24, 25]  # Replace with actual GPIOs used for each flow sensor
+FLOW_PINS = [24, 25, 12, 21]  # Replace with actual GPIOs used for each flow sensor
 
 # GPIO pins for relays controlling pumps/valves
-RELAY_PINS = [13, 26, 17, 19]  # Replace with actual GPIOs connected to relays
+RELAY_PINS = [13, 26, 17, 19, 5, 6, 16, 20]  # Replace with actual GPIOs connected to relays
 
 class FlowMeter:
     def __init__(self, pin, pulses_per_liter=100, name="PUMP"):

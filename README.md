@@ -170,6 +170,30 @@ http://192.168.1.42:8000/
 ```
 ---
 
+Here’s a polished and professional version of your note:
+
+---
+
+## Daily Checks
+
+> Verify that each individual component powers on and off correctly and functions as expected.
+
+To perform the check, run the following script. It will turn each component **on for 2 seconds**, then **off for 1 second** in sequence:
+
+**Script location:**
+
+```
+~/Documents/projects/sypp/daily-checks/app.py
+```
+
+**Command to execute:**
+
+```bash
+python3 ~/Documents/projects/sypp/daily-checks/app.py
+```
+
+---
+
 ## Safety Notes
 
 * Ensure the pumps and relays are powered correctly and safely.

@@ -1,8 +1,10 @@
 import time
 import threading
 import file_utils as file_utils
+
 from gpiozero import OutputDevice, DigitalInputDevice
 from datetime import datetime
+from controller.terminal_color import TerminalColor
 
 # Constants
 DURATION = 15  # Duration of the monitoring cycle in seconds
@@ -136,6 +138,7 @@ try:
                 file_utils.append_to_file(result)  # Save result to file
 
                 print(result)  # Print result to console
+                TerminalColor.print_colored(result, "green")
 
             time.sleep(5)  # Pause before starting next cycle
 

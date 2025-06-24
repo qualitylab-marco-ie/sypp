@@ -24,7 +24,7 @@ def test_on_off(device) -> None:
     time.sleep(2)
 
     device.off()
-    print(f"Device ON")
+    print(f"Device OFF")
     time.sleep(1)
 
 

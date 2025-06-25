@@ -30,9 +30,9 @@ def test_on_off(device) -> None:
 
 def main() -> None:
     for i, device in enumerate(DEVICES):
-        print(f"Testing device on GPIO {RELAY_PINS[i]}")
         try:
-            for x in range(2):
+            for x in range(2):                
+                print(f"Testing device on GPIO {RELAY_PINS[i]}")
                 test_on_off(device)
         except Exception as e:
             print(e)

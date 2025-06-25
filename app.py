@@ -24,6 +24,9 @@ FLOW2   = 25
 PULSE   = 537
 """
 
+#FLOW_PINS = [12]
+#RELAY_PINS = [5, 6]
+
 # GPIO pins for flow sensors
 FLOW_PINS = [24, 25, 12, 21]  # Replace with actual GPIOs used for each flow sensor
 
@@ -50,6 +53,7 @@ class FlowMeter:
     def _on_pulse(self):
         """Internal callback triggered on each pulse detected from the sensor."""
         self.pulse_count += 1
+        # print(self.pulse_count)
 
     def monitor(self, duration):
         """
@@ -137,7 +141,7 @@ try:
                 result["end"] = result["end"].isoformat()
                 file_utils.append_to_file(result)  # Save result to file
 
-                print(result)  # Print result to console
+                # print(result)  # Print result to console
                 TerminalColor.print_colored(result, "green")
 
             time.sleep(5)  # Pause before starting next cycle

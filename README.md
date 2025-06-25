@@ -48,16 +48,16 @@ RELAY_PINS = [13, 26, 17, 19]
 
 ## Final Pin Assignment Table
 
-| Component | GPIO | Direction | Relay                   |
-| --------- | ---- | --------- | ----------------------------- |
-| **PUMP 1** | 13   | Output    | K4     |
-| **SOLENOID 1**  | 26   | Output    | K2 |
-| **PUMP 2** | 17   | Output    | K3     |
-| **SOLENOID 2**  | 19   | Output    | K1 |
-| **PUMP 3** | 5    | Output    | K3        |
-| **SOLENOID 3**  | 6    | Output    | K1    |
-| **PUMP 4** | 16   | Output    | K4        |
-| **SOLENOID 4**  | 20   | Output    | K2    |
+| Component | GPIO | Direction | Relay | Relay Pin                   |
+| --------- | ---- | --------- | ----------------------------- | ----------------------------- |
+| **PUMP 1** | 13   | Output    | R1 | K4     |
+| **SOLENOID 1**  | 26   | Output    | R1 | K2 |
+| **PUMP 2** | 17   | Output    | R1 | K3     |
+| **SOLENOID 2**  | 19   | Output    | R1 | K1 |
+| **PUMP 3** | 5    | Output    | R3 | K3        |
+| **SOLENOID 3**  | 6    | Output   | R3  | K1    |
+| **PUMP 4** | 16   | Output    | R2 | K4        |
+| **SOLENOID 4**  | 20   | Output   | R2  | K2    |
 | **FLOW METER 1** | 24   | Input     | -        |
 | **FLOW METER 2** | 25   | Input     | - |
 | **FLOW METER 3** | 12   | Input     | -           |
